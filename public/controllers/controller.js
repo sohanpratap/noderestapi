@@ -23,10 +23,38 @@
 
 	$scope.remove = function(id){  // Add contact
 		console.log(id);
-		$http.delete('/contactlist/'+id);
-		
-     
+		$http.delete("/contactlist/"+id).success(function (response){
+			console.log(response);
+			refresh();
+
+		});
 	};	
+
+	$scope.edit = function(id){
+
+		$http.get('/contactlist/'+id).success(function (response){
+
+			$scope.contact =response;	
+		});
+	};
+
+	$scope.update = function(){
+
+		var id = $scope.contact._id;
+		$http.put('/contactlist/'+id,$scope.contact).success(function (response){
+
+			console.log(response);
+			refresh();
+		});
+
+	};
+
+	$scope.deselect = function (){
+
+		$scope.contact = '';
+	};
+
+
 
 
 	}]);
