@@ -10,7 +10,7 @@ var db = mongojs('contactlist',['contactlist']);
 
 
 app.get('/contactlist',function (req,res){
-	console.log('I received a get request');
+	console.log('I received a get request123445');
 
 	db.contactlist.find(function (err, docs){
 
